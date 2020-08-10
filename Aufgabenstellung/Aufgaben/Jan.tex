@@ -1,54 +1,71 @@
 
-\section{Aufgabe 4}
+\section{Conways \textit{game of life}}
 
-To determine the atomic weight of magnesium via its reaction with oxygen and to study the stoichiometry of the reaction (as defined in \ref{definitions}):
+Im Jahr 1968 wurde von J. H. Conway an der Universität Cambridge das \textit{game of life} erfunden und 1970 von M. Gardner im Scientific American einem breiten Publikum vorgestellt. Dabei handelt es sich um einen Algorithmus, der das Wachstum von fiktiven Lebewesen (Bakterien) simuliert. Infolge der interessanten Muster, die dabei entstehen, ist das game of life weit über Biologenkreise hinaus bekannt geworden. Es ist ein Beispiel für einen sogenannten zellulären Automaten. Schauplatz des \textit{game of life} ist ein zweidimensionales Gitter aus Zellen, die entweder tot (' ') oder lebendig ('X') sind. Wie sich eine Zelle weiter entwickelt, hängt von ihren acht Nachbarn ab (diagonale Nachbarn zählen ebenfalls), und zwar gelten folgende Regeln:
+
+\begin{enumerate}[label=\arabic*]
+	\item Eine lebende Zelle überlebt in der nächsten Generation, wenn sie zwei oder drei Nachbarn hat. Sind es weniger bzw. mehr, so stirbt sie an Vereinsamung bzw. Überbevölkerung.
+	\item Eine tote Zelle wird immer dann in der nächsten Generation zum Leben erweckt, wenn sie genau drei lebendige Nachbarn hat, ansonsten bleibt sie tot.
+\end{enumerate}
+
+Die Zeit verstreicht dabei in diskreten Schritten, d.h. jede Zelle verharrt in ihrem zuvor eingenommenen Zustand, bis gewissermaßen bei einem Gongschlag alle gleichzeitig in den neuen Zustand übergehen. Anders ausgedrückt: Es wird für jede Zelle nachgeschaut, wie ihr Zustand und der ihrer Nachbarn zu einer bestimmten Zeit $n$ ist und berechnet, wie ihr Zustand zur nächsten Zeit $n + 1$ sein wird. Hat man dies für alle Zellen getan, so werden alle gleichzeitig auf den neuen Zustand gesetzt. \\
+Zur Veranschaulichung ist dies im Folgenden an einem einfachen Beispiel erläutert. Das \textit{Spielfeld} besteht hierbei aus einem 5 mal 5 Zellen großen Feld.
+
+\begin{minipage}{.45\textwidth}
+	\begin{table}[H]
+		\center
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			~   & ~ & ~ & ~ & ~ \\ \hline
+			&   &   &   &  \\ \hline
+			& X & X & X &  \\ \hline
+			&   &   &  &  \\ \hline
+			&   &   &   &  \\ \hline
+		\end{tabular}
+		\caption*{Generation 0}
+	\end{table}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+	\center
+	\large
+$\longrightarrow$
+\end{minipage}
+\begin{minipage}{.45\textwidth}
+\begin{table}[H]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		~   & ~ & ~ & ~ & ~ \\ \hline
+		&   & X &   &  \\ \hline
+		&   & X &   &  \\ \hline
+		&   & X &   &  \\ \hline
+		&   &   &   &  \\ \hline
+	\end{tabular}
+	\caption*{Generation 1}
+\end{table}
+\end{minipage}
 
 
-% If you have more than one objective, uncomment the below:
-%\begin{description}
-%\item[First Objective] \hfill \\
-%Objective 1 text
-%\item[Second Objective] \hfill \\
-%Objective 2 text
-%\end{description}
+Die 0-te Generation besteht aus einer Linie von drei belebten Feldern. Für die Folgegeneration geht unter Annahme der Regel 1 hervor, dass die beiden äußeren Zellen sterben werden, da diese weniger als 2 Nachbarn haben. Die mittlere Zelle überlebt, da sie 2 Nachbarn hat und somit nicht mehr als 3 oder weniger als 2.\\
+Wird die Regel 2 angewandt, so entstehen zwei neu belebte Zellen über und unter der mittleren Zelle, da diese jeweils genau drei Nachbarn haben. Die restlichen Zellen bleiben unberührt. \\
+Verschiedene Startmuster können hierbei zu unterschiedlichen "Populationsverläufen" führen. 
 
-\subsection{Definitions}
-
- 
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
-
-\section{Experimental Data}
+%TODO: hier ein beispiel für eine einfache Formation
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 3
-%----------------------------------------------------------------------------------------
+\subsection{Aufgabenbeschreibung}
+Es soll das \textit{game of life} in Python selber Programmiert werden. Eine erste grobe Aufgabenaufteilung kann hierbei aus dem \textit{EVA}-Prinzip abgeleitet werden:
+\begin{itemize}
+	\item[Eingabe] Als Eingabe wird hierbei das initiale Füllen des Spielfelds verstanden. Die 0-te Generation soll von Außen vorgegeben werden können. Die eingegebenen Daten müssen in einer Form vorliegen, dass die Verarbeitung sie für die Ermittlung der Nachfolgegenerationen verwenden kann.
+	\item[Verarbeitung] Die Verarbeitung ist der Motor des Spiel. Hierbei müssen die oben genannten Regeln umgesetzt werden und Generation für Generation ermittelt werden. Das Weiterschalten von den einzelnen Generationen kann über eine Zeit oder einen Tastendruck geschehen. Die ermittelten Daten sollen am Ende einer Generationsermittlung immer in der Form vorliegen, wie sie auch von der Eingabe zur Verfügung gestellt wurden. In dieser Form werden sie der Ausgabe zur Verfügung gestellt.
+	\item[Ausgabe] Unter der Ausgabe ist die Darstellung des aktuellen Spielfelds samt\textquotedblleft Bevölkerung\textquotedblright~ zu verstehen.
+\end{itemize}
 
-\section{Sample Calculation}
+Vorab sollten sich jedoch einige Gedanken über die Rahmenbedingungen wie Größe des Spielfelds und Regeln für das Verhalten der Zellen am Rand des Spielfelds gemacht werden. 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 4
-%----------------------------------------------------------------------------------------
-
-\section{Results and Conclusions}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.65\textwidth]{imgs/placeholder} % Include the image placeholder.png
-\caption{Figure caption.}
-\end{center}
-\end{figure}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 5
-%----------------------------------------------------------------------------------------
-
-\section{Discussion of Experimental Uncertainty}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 6
-%----------------------------------------------------------------------------------------
-
-\section{Answers to Definitions}
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[width=0.65\textwidth]{imgs/placeholder} % Include the image placeholder.png
+%\caption{Figure caption.}
+%\end{center}
+%\end{figure}

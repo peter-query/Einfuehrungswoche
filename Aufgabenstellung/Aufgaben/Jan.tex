@@ -61,7 +61,95 @@ Es soll das \textit{game of life} in Python selber Programmiert werden. Eine ers
 	\item[Ausgabe] Unter der Ausgabe ist die Darstellung des aktuellen Spielfelds samt\textquotedblleft Bevölkerung\textquotedblright~ zu verstehen.
 \end{itemize}
 
-Vorab sollten sich jedoch einige Gedanken über die Rahmenbedingungen wie Größe des Spielfelds und Regeln für das Verhalten der Zellen am Rand des Spielfelds gemacht werden. 
+Vorab sollten sich jedoch einige Gedanken über die Rahmenbedingungen wie Größe des Spielfelds und Regeln für das Verhalten der Zellen am Rand des Spielfelds gemacht werden.\\
+Mehr Informationen zum \textit{game of life} gibt es mit Sicherheit im Internet! Im Folgenden werden wir uns mit der groben Vorgehensweise zum Implementieren des Programms beschäftigen.
+
+\subsection{Vorschläge für die Umsetzung}
+\subsubsection{Datenformat einer Generation} \label{sec:Datenformat}
+Eine der wichtigsten Dinge die bei der Konzeption eines Programms beachtet werden müssen sind die Schnittstellen der einzelnen Module untereinander. Dies wird umso wichtiger, wenn mehrere Programmiere parallel an einem Projekt an unterschiedlichen Modulen arbeiten. Als Module können hierbei die einzelnen Schritte des EVA-Prinzips angesehen werden. Die Schnittstelle is in diesem Fall das weiterreichen der Daten. Wird hier nicht von Anfang an eine einheitliche Form gewählt, so führt dies beim Zusammenführen der Module zu einem großen Chaos und eine Menge zusätzliche Arbeit entsteht.\\
+Was als Daten übergeben werden muss, ist im Grunde genommen nur das Spielfeld. Dieses besteht aus einzelnen Zellen, welche die Werte \textit{tot} oder \textit{lebendig} annehmen können.  Da das Spielfeld eine Fläche ist, bietet sich eine zweidimensionale Datenstruktur an. Eine Umsetzung hierfür kann in Python ein Numpy Array sein:
+\begin{python}
+import numpy as np
+height = 4
+width = 5
+my_field = np.ones((height, width))
+\end{python}
+Das Codesnippet erzeugt ein Array der gewünschten Höhe und Breite, welches initial mit Nullen gefüllt ist:
+\begin{table}[H]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		0  & 0& 0 & 0 & 0 \\ \hline
+		0  & 0& 0 & 0 & 0\\ \hline
+		0  & 0& 0 & 0 & 0\\ \hline
+		0  & 0& 0 & 0 & 0\\ \hline
+	\end{tabular}
+\end{table}
+Um nun die zwei verschiedenen Zustände (\textit{lebendig}, \textit{tot}) anzuzeigen, sind verschiedene Darstellungen denkbar. Zum einen könnten tote Zellen mit Nullen und lebendige Zellen mit Einsen dargestellt werden. Denkbar wäre auch eine boolsche Darstellung \pythoninline{True} für lebendig und \pythoninline{False} für tot oder eine Darstellung mit Hilfe von Strings:\\
+
+
+\begin{table}[H]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	0  & 1& 0 & 1 & 0 \\ \hline
+	0  & 0& 1 & 0 & 0\\ \hline
+	0  & 1& 0 & 1 & 0\\ \hline
+	0  & 0& 0 & 0 & 0\\ \hline
+	\end{tabular}
+	\caption*{Darstellung durch Nullen und Einsen}
+\end{table}
+
+\begin{table}[H]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	False  & True& False & True & False \\ \hline
+	False  & False& True & False & False\\ \hline
+	False  & True& False & True & False\\ \hline
+	False  & False& False & False & False\\ \hline
+	\end{tabular}
+	\caption*{Darstellung durch True oder False}
+\end{table}
+
+\begin{table}[H]
+	\center
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	tot  & leb& tot & leb & tot \\ \hline
+	tot  & tot& leb & tot & tot\\ \hline
+	tot  & leb& tot & leb & tot\\ \hline
+	tot  & tot& tot & tot & tot\\ \hline
+	\end{tabular}	
+	\caption*{Darstellung durch Strings}
+\end{table}
+Vorab sollte in der Gruppe festgelegt werden, welches Datenformat ihr wählt. Die oben aufgeführten Formate sind nur Vorschläge. Falls ihr bessere Ideen habt, könnt ihr diese auch gerne umsetzen.
+
+\subsubsection{Eingabe der Generation 0}
+Für die Eingabe der nullten Generation sind verschiedene Möglichkeiten Denkbar. Ziel des Ganzen ist es, am ende der Eingabe ein Spielfeld in der Form vorliegen zu haben, wie es in \ref{sec:Datenformat} festgelegt wurde. Hier sollte die Möglichkeit bestehen, einzelne Zellen als \textit{lebendig} zu initialisieren. Denkbar wäre auch das direkte Setzen verschiedener Formen. \\
+Als simpelste Form der Eingabe ist hierbei sicher das hardgecodete initiale setzen des Spielfelds möglich. Denkbar wäre auch das einlesen einer \textit{csv} Datei, in der das Spielfeld eingetragen ist. Ein Beispiel für eine solche Datei ist in dem Ordner \textbf{TODO} zu finden. \\
+Etwas fortgeschrittenere Programmierer können hierbei auch auf eine grafische Oberfläche zurückgreifen, eine so genannte \textit{GUI}. 
+
+\subsubsection{Verarbeitung der einzelnen Generationen}
+
+\subsubsection{Ausgabe / Anzeige einer Generation}
+Bei der Anzeige der aktuellen Generation kann im simpelsten Fall die Konsole von Python verwendet werden. Denkbar wäre hier die Darstellung in Textform:\\ %TODO: Format Spielfeld
+6\\
+7\\
+8\\
+9\\
+0\\
+1 				X											X\\
+2 				X 		X\\
+3 		X 	XX 	X\\
+4 				XX 		X X				X XXXX X\\
+5 				XX 	X 	XX 		XXXX 				X\\
+6 		X 	X X X XX\\
+7 				X X			XX		X XX\\
+8 				X			X	X				X\\
+9 				X\\
+0\\
+123456789012345678901234567890123456789012345678901234567890123456789\\
 
 %\begin{figure}[h]
 %\begin{center}

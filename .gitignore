@@ -132,3 +132,6 @@ dmypy.json
 *.aux
 *.log
 *.gz
+
+# Pypylon Folder
+.idea/

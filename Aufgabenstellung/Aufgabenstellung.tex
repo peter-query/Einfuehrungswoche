@@ -28,7 +28,7 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{caption}
-
+\usepackage{pythonhighlight}
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
@@ -45,37 +45,6 @@
 \definecolor{deepgreen}{rgb}{0,0.5,0}
 
 \usepackage{listings}
-
-% Python style for highlighting
-\newcommand\pythonstyle{\lstset{
-		language=Python,
-		basicstyle=\ttm,
-		otherkeywords={self},             % Add keywords here
-		keywordstyle=\ttb\color{deepblue},
-		emph={MyClass,__init__},          % Custom highlighting
-		emphstyle=\ttb\color{deepred},    % Custom highlighting style
-		stringstyle=\color{deepgreen},
-		frame=tb,                         % Any extra options here
-		showstringspaces=false            % 
-}}
-
-
-% Python environment
-\lstnewenvironment{python}[1][]
-{
-	\pythonstyle
-	\lstset{#1}
-}
-{}
-
-% Python for external files
-\newcommand\pythonexternal[2][]{{
-		\pythonstyle
-		\lstinputlisting[#1]{#2}}}
-
-% Python for inline
-\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
-
 
 
 %\usepackage{times} % Uncomment to use the Times New Roman font
@@ -99,7 +68,7 @@
 \blindtext
 
 \input{Aufgaben/Seppel.tex}
-\input{Aufgaben/Jan.tex}
+%\input{Aufgaben/Jan.tex}
 
 
 

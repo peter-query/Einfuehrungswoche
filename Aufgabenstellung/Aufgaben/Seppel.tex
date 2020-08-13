@@ -27,34 +27,3 @@ Das Programm soll dann für die eingelesenen Zahlen folgende Größen berechnen:
 \end{enumerate}
 
 \newpage
-\section{Aufgabe 3: Streichhölzer ziehen}
-
-In dieser Aufgabe soll ein bekanntes Streichholzspiel realisiert werden. Von einer Anfangsmenge von Streichhölzern nehmen zwei Spieler abwechselnd eins, zwei oder drei Hölzchen weg. Wer das
-letzte Hölzchen nehmen muß, hat verloren. Das Programm soll so gestaltet sein, daß ein Spieler gegen den Computer spielt.
-
-\ \\ \\Der Spieler kann dabei bei jedem seiner Zügen nach Gutdünken wahlweise eins, zwei oder drei Hölzchen nehmen. Die Züge des Computers seien zunächst in einer ersten Version so realisiert, daß er zufällig eins, zwei oder drei Hölzchen nimmt.
-Lediglich wenn nur noch vier Hölzchen oder weniger übrig geblieben sind, spielt der Computer so, daß er gewinnt.
-Bei vier Hölzchen beispielsweise nimmt er drei, damit der Spieler auf dem letzten Hölzchen sitzen bleibt. 
-
-\ \\ \\Zufallszahlen kann man in python mit der Funktion \textbf{randint} aus der Bibliothek \textbf{random} generieren. Mit den Anweisungen:
-\begin{python}
-import random
-
-krasse_zahl = random.randint(1,10)
-\end{python}
-\ \\wird der Variable krasse\_zahl eine Zufallszahl zwischen 1 und 10 zugewiesen. \ \\\\Damit bei jedem Programmdurchlauf immer eine neue Folge von Zufallszahlen berechnet wird, muss der Zufallsgenerator einmal am Anfang des Programms initialisiert werden. Dies geschieht mit der Funktion \textbf{random.seed} 
-Mit könnte man somit beispielsweise Zufallszahlen zwischen 1 und 3 erzeugen. Achte darauf, daß
-auch der Spieler immer nur eins, zwei oder drei Hölzchen nehmen darf, nicht mehr und nicht weniger. 
-\ \\\\
-Wenn das Programm läuft, überlegt euch eine optimale Strategie für den Computer. Der Computer soll also in einer verbesserten Version des Programms von
-Beginn an stehts den optimalen Zug ausführen. Er soll also immer so ziehen, daß er, wenn er die
-Chance zu gewinnen hat, diese auch nutzt.
-Die Darstellung auf der Console könnte dann z.B. wie folgt aussehen:
-\ \\\\
-Die aktuelle Anzahl der Hoelzchen ist: 13
-\ \\* * * * * * * * * * * * *
-\ \\I I I I I I I I I I I I I
-\ \\I I I I I I I I I I I I I
-\ \\I I I I I I I I I I I I I
-\ \\* * * * * * * * * * * * *
-\ \\Gönn dir Hoelzchen, Brudi! (1, 2, 3):

@@ -10,6 +10,7 @@ Das Diagramm besteht aus verschiedenen Elementen, welche die Elemente eines Prog
 \end{figure}
 
 \subsection{Symbolik} \label{sec:Symbolik}
+im Folgenden wird de Symbolik von Struktogrammen kurz anhand von Minimalbeispielen erklärt. Diese Beispiele enthalten immer ein kleines Struktogramm mit dem passenden Codesnippet.
 \subsubsection{Anweisung}
 Eine Anweisung wird in einem rechteckigen Kasten geschrieben. Alle die Blöcke werden von oben nach unten abgearbeitet. Im folgenden Beispiel wird der Betrag einer Zahl berechnet und ausgegeben, welche zuvor eingelesen wurde.\\
 
@@ -32,8 +33,8 @@ print(x)
 \end{python}
 \end{minipage}
 \subsubsection{If-Abfrage}
-
-Eine If-Abfrage\footnote{Achtung: Es wird IF-Abfrage genannt. If-Schleifen gibt es nicht!!!} stellt eine Verzweigung im Programm dar. Wir lesen eine Zahl ein. Falls die Zahl negativ ist, soll der Betrag berechnet werden. Abschließend wird die Zahl ausgegeben:\\
+Eine If-Abfrage\footnote{Achtung: Es wird IF-Abfrage genannt. If-Schleifen gibt es nicht!!!} stellt eine Verzweigung im Programm dar. Wenn eine Bedingung erfüllt ist, wird en bestimmter Teil Code ausgeführt. \\
+Wir lesen eine Zahl ein. Falls die Zahl negativ ist, soll der Betrag berechnet werden. Abschließend wird die Zahl ausgegeben:\\
 
 \begin{minipage}{.45\textwidth}
 \centering
@@ -53,7 +54,8 @@ print(x)
 \end{minipage}
 
 \subsubsection{For-Schleife}
-Wie nehmen an, dass in einer liste eine menge an zahlen steht. Die For-Schleife soll die Zahlen aufsummieren. Abschließend soll die Summe ausgegeben werden:
+For-Schleifen werden da verwendet, wo vorab bereits bekannt ist, wie viele Schleifendurchläufe gebraucht werden. Beispiele hierfür ist das iterieren über eine Liste oder das durchführen eines Vorgangs $n$-mal.\\
+Wir nehmen an, dass in einer Liste eine Menge an Zahlen steht. Die For-Schleife soll die Zahlen aufsummieren. Abschließend soll die Summe ausgegeben werden:
 
 \begin{minipage}{.45\textwidth}
 	\centering
@@ -69,12 +71,12 @@ num_lst = [1, 2, 3, 4, 5]
 res = 0
 for num in num_lst:
 	res = res + num
-print(num)
+print(res)
 \end{python}
 \end{minipage}
 
 \subsubsection{While-Schleife}
-
+While-Schleifen werden dort verwendet, wo die Abbruchbedingung der Schleife anfangs noch nicht direkt bekannt ist. Die Schleife wird so lange ausgeführt, wie die Bedingung im Schleifenkopf True ist.
 
 \subsection{Aufgaben}
 Die folgenden Aufgaben könnt ihr mit Hilfe des Tools \textit{structorizer} (https://www.structorizer.com/struct.php) bearbeiten. Das Tool weist weitere Elemente für Struktogramme auf, die wir entweder nicht verwenden oder die nicht in Python vorhanden sind.
